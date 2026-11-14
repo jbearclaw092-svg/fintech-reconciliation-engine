@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw_ledger
+    database: FINTECH_RAW_DB
+    schema: INTERNAL_LEDGER
+    tables:
+      - name: transactions
+
+  - name: raw_rates
+    database: FINTECH_RAW_DB
+    schema: MARKET_RATES
+    tables:
+      - name: ecb_rates

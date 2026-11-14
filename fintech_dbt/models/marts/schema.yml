@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fct_reconciliation
+    description: "Daily multi-currency payment reconciliation against official ECB exchange rates."
+    columns:
+      - name: txn_id
+        description: "Primary key for internal ledger transactions."
+        tests:
+          - unique
+          - not_null
+      - name: expected_eur_amount
+        description: "Calculated EUR value using market rate; fails if FX rate is missing."
+        tests:
+          - not_null
+      - name: reconciliation_status
+        tests:
+          - accepted_values:
+              values: ['RECONCILED', 'DISCREPANCY_FLAGGED']
